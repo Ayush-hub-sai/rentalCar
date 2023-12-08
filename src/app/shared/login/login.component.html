@@ -1,0 +1,25 @@
+
+<!-- loginModal -->
+<ng-container *ngIf="openLogModal">
+    <div class="modal-header">
+      <h4 class="modal-title">Login</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="activeModal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" [(ngModel)]="loginObj.emailId">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="loginObj.password">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="login(loginObj)">Login</button>
+    </div>
+  </ng-container>

@@ -1,0 +1,59 @@
+<div class="car-list-home-container">
+  <div class="car-list-home">
+    <div class="row">
+      <div class="col-3" *ngFor="let car of carListFromParent">
+        <section class="car-list-card">
+          <div class="car-list-card-image" style="height: 160px;"><img [src]="car.imageUrl">
+          </div>
+          <div class="car-list-card-description">
+            <div class="car-list-card-description-reviews">
+              <div class="car-list-card-description-reviews-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+              <div class="car-list-card-description-reviews-value">
+                4.98
+              </div>
+              <div class="car-list-card-description-reviews-count">
+
+              </div>
+            </div>
+            <div class="car-list-card-description-title">
+              {{car.brand}} {{car.name}}
+            </div>
+            <div class="car-list-card-description-properties">
+              <div class="car-list-card-description-properties-property">
+                Manual
+                <div class="property-point"></div>
+              </div>
+              <div class="car-list-card-description-properties-property">
+                Petrol
+                <div class="property-point"></div>
+              </div>
+              <div class="car-list-card-description-properties-property">
+                7 Seats
+                <!---->
+              </div>
+            </div>
+          </div>
+          <div class="car-list-card-price-distance">
+            <div class="car-list-card-price">
+              <div class="car-list-card-price-availability-text">
+                Availble from {{car.registeredOn |date:'dd-MM-yyyy'}}
+              </div>
+              <div class="car-list-card-price-title">
+                {{car.pricingDescription}}
+              </div>
+              <div class="car-list-card-price-sub-title">
+
+              </div>
+            </div>
+            <div class="car-list-card-distance">
+              <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+              <div class="car-list-card-distance-place">
+                {{car.locationTitle}}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

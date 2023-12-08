@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <section>
+    <div class="text-end">
+      <button type="button" class="btn btn-sm btn-success" (click)="AddNewCarModal()">Add Car</button>
+    </div>
+  </section>
+  <section>
+    <app-common-car [carListFromParent]="carList"></app-common-car>
+  </section>
+</div>

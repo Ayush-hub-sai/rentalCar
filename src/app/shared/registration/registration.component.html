@@ -1,0 +1,53 @@
+<ng-container *ngIf="openRegModal">
+  <div class="modal-header">
+    <h4 class="modal-title">Register</h4>
+    <span class="pull-right">
+      <button type="button " class="pull-right close btn btn-sm btn-outline-danger" aria-label="Close"
+        (click)="activeModal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </span>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col">
+        <label for="name">Name</label>
+        <input type="text" name="name" [(ngModel)]="registerObj.name" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="registerObj.emailId">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="mobile">Mobile Number</label>
+        <input type="text" class="form-control" name="mobile" [(ngModel)]="registerObj.mobileNo">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="registerObj.password">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="role">Who are You?</label>
+        <select id="" class="form-control" name="role" [(ngModel)]="registerObj.userRole">
+          <option value="">Select your Role</option>
+          <option value="customer">Customer</option>
+          <option value="CarOwner">Car Owner</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+      (click)="register(registerObj)">Register</button>
+  </div>
+</ng-container>
