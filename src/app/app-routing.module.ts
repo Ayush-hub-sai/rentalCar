@@ -8,8 +8,8 @@ import { CarsComponent } from './components/cars/cars.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'booking', component: BookingComponent },
+  { path: 'search/:locationId', component: SearchComponent },
+  { path: 'booking/:locationId/:carId', component: BookingComponent },
   { path: 'cars', component: CarsComponent }
 ];
 

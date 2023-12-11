@@ -30,4 +30,21 @@ export class CarService {
     return this.http.get(this.apiUrl + 'GetAllLocations');
   }
 
+  getAllCar() {
+    return this.http.get(this.apiUrl + 'GetAllCars');
+  }
+
+  getCarByLocationId(locationId: string) {
+    return this.http.get(this.apiUrl + 'GetAllCarsByLocation?id=' + locationId);
+  }
+
+  getCarById(carId: string) {
+    return this.http.get(this.apiUrl + 'GetCarById?id=' + carId);
+  }
+
+  createCarBooking(carObj: any) {
+    return this.http.post(this.apiUrl + 'createNewBooking', carObj);
+  }
+
+
 }

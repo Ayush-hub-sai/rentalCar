@@ -5,7 +5,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
   templateUrl: './common-car.component.html',
   styleUrls: ['./common-car.component.css']
 })
-export class CommonCarComponent implements OnInit, OnChanges {
+export class CommonCarComponent implements OnInit {
   @Input() carListFromParent: any;
 
   constructor() {
@@ -14,10 +14,6 @@ export class CommonCarComponent implements OnInit, OnChanges {
   
   ngOnInit(): void {
 
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.carListFromParent);
   }
 
 }

@@ -4,6 +4,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModalComponent } from './shared/common-modal/common-modal.component';
 import { RegistrationComponent } from './shared/registration/registration.component';
 import { LoginComponent } from './shared/login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
     "emailId": ''
   }
 
-  constructor(private _carService: CarService, private modalService: NgbModal) {
+  constructor(private _carService: CarService, private modalService: NgbModal,private router:Router) {
     let loggedUser = localStorage.getItem('loginUser')
     if (loggedUser) {
       this.loginObj = JSON.parse(loggedUser)
@@ -50,6 +51,7 @@ export class AppComponent {
   LogOut() {
     localStorage.removeItem("loginUser")
     this.loginObj.emailId = ''
+    this.router.navigate(['/home'])
   }
 
 
