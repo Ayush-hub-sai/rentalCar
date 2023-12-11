@@ -15,6 +15,11 @@ import { RegistrationComponent } from './shared/registration/registration.compon
 import { LoginComponent } from './shared/login/login.component';
 import { CommonCarComponent } from './shared/common-car/common-car.component';
 import { AddCarComponent } from './shared/add-car/add-car.component'
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+interface NgxSpinnerConfig {
+  type?: string;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +38,9 @@ import { AddCarComponent } from './shared/add-car/add-car.component'
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
   ],
   providers: [],
   bootstrap: [AppComponent]

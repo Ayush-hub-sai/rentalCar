@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -13,7 +14,9 @@ export class HomeComponent implements OnInit {
   fromLocation: string = ''
   toLocation: string = ''
 
-  constructor(private _carService: CarService, private router: Router) {
+  constructor(private _carService: CarService,
+    private router: Router,
+    private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -22,9 +25,9 @@ export class HomeComponent implements OnInit {
   }
 
   getAllCar() {
+    this.spinner.show()
     this._carService.getAllCar().subscribe((res: any) => {
-      console.log(res);
-
+      this.spinner.hide()
       this.publicCarList = res.data
     })
   }
@@ -36,11 +39,13 @@ export class HomeComponent implements OnInit {
   }
 
   getCarBySearch() {
+    this.spinner.show()
     this.router.navigate(['/search', this.fromLocation])
   }
 
 
   carBooking(carId: string) {
-    this.router.navigate(['/booking', this.fromLocation, carId])
+    this.spinner.show()
+    this.router.navigate(['/booking', carId])
   }
 }

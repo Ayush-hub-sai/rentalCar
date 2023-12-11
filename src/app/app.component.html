@@ -18,18 +18,18 @@
         <ng-container *ngIf="loginObj.emailId==''">
           <button class="btn btn-outline-primary round-button mx-2" type="button" (click)="loginModal()">Login</button>
           <button class="btn btn-success round-button" type="button" (click)="registerModal()">Register</button>
-
         </ng-container>
-
         <ng-container *ngIf="loginObj.emailId!=''">
           <button class="btn btn-outline-primary round-button mx-2" type="button">{{loginObj.name}}</button>
           <button class="btn btn-success round-button" type="button" (click)="LogOut()">Log Out</button>
         </ng-container>
+
       </form>
     </div>
   </div>
 </nav>
 
 <div class="container-fluid pt-3">
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
   <router-outlet></router-outlet>
 </div>

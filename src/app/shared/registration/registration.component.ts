@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -19,13 +20,17 @@ export class RegistrationComponent {
     "createdOn": new Date()
   }
 
-  constructor(private _carService: CarService, public activeModal: NgbActiveModal) {
+  constructor(private _carService: CarService,
+    public activeModal: NgbActiveModal,
+    private spinner: NgxSpinnerService) {
 
   }
   register(data: any) {
+    this.spinner.show();
     this._carService.register(data).subscribe((response: any) => {
       if (response.result) {
         this.activeModal.close()
+        this.spinner.hide()
       }
     })
   }

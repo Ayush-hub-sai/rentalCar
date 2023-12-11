@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,14 @@ import { Injectable } from '@angular/core';
 export class CarService {
   apiUrl: string = 'https://freeapi.miniprojectideas.com/api/ZoomCar/'
 
+  public carUserDetails = new Subject<string>();
+  data$ = this.carUserDetails.asObservable();
+
   constructor(private http: HttpClient) {
+  }
+
+  updateData(newValue: string) {
+    this.carUserDetails.next(newValue);
   }
 
   register(obj: any) {
