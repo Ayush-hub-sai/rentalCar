@@ -6,6 +6,7 @@ import { RegistrationComponent } from './shared/registration/registration.compon
 import { LoginComponent } from './shared/login/login.component';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -22,14 +23,19 @@ export class AppComponent {
   constructor(private _carService: CarService,
     private modalService: NgbModal,
     private router: Router,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
+  ) {
     let loggedUser = localStorage.getItem('loginUser')
     if (loggedUser) {
       this.loginObj = JSON.parse(loggedUser)
     }
 
     this._carService.data$.subscribe((newValue) => {
-      this.loginObj = newValue;
+      console.log(newValue);
+
+      this.loginObj.emailId = newValue;
+
     });
 
   }
@@ -57,11 +63,12 @@ export class AppComponent {
   }
 
   LogOut() {
-    this.spinner.show()
+    this.toastr.success("User logged in successfully.")
+    // this.spinner.show()
     localStorage.removeItem("loginUser")
     this.loginObj.emailId = ''
     this.router.navigate(['/home'])
-    this.spinner.hide()
+    // this.spinner.hide()
   }
 
 

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { CarService } from 'src/app/services/car.service';
 import { LoginComponent } from 'src/app/shared/login/login.component';
 
@@ -40,7 +41,9 @@ export class BookingComponent implements OnInit {
     private _carService: CarService,
     private router: Router,
     private modalService: NgbModal,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
+  ) {
     this.activateUrl?.params?.subscribe((res: any) => {
       this.locationId = res?.locationId
       this.carIdData = res?.carId
@@ -70,15 +73,46 @@ export class BookingComponent implements OnInit {
   }
 
   creteCarBooking() {
-    this.spinner.show()
     if (this.loginObj?.userId == undefined) {
       this.loginModal();
     } else {
+      console.log(this.carObj.fromLocationId);
+
       if (this.carObj.fromLocationId < 1) {
-        alert("Choose pick up location");
-      } else {
+        this.toastr.error("Please Enter from Location")
+        return
+      }
+      if (this.carObj.toLocationId < 1) {
+        this.toastr.error("Please Enter To Location")
+        return
+      }
+
+      if (this.carObj.travelDate == "") {
+        this.toastr.error("Please Enter Travel Date")
+        return
+      }
+
+      if (this.carObj.startTime == "") {
+        this.toastr.error("Please Enter Start Time")
+        return
+      }
+
+      if (this.carObj.pickupAddress == "") {
+        this.toastr.error("Please Enter Pickup Address")
+        return
+      }
+
+      if (this.carObj.alternateContactNo == "") {
+        this.toastr.error("Please Enter Alt. Contact Number")
+        return
+      }
+
+
+      else {
+        this.spinner.show()
         this._carService.createCarBooking(this.carObj).subscribe((res: any) => {
           this.router.navigate(['/home']);
+          this.toastr.success(res.message)
           this.spinner.hide()
         });
       }

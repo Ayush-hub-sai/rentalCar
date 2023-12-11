@@ -38,6 +38,7 @@ export class SearchComponent implements OnInit {
   }
 
   getCarByLocationId() {
+    this.spinner.show()
     this._carService.getCarByLocationId(this.locationId).subscribe((res: any) => {
       this.availableCar = res.data
       this.spinner.hide()
@@ -45,8 +46,10 @@ export class SearchComponent implements OnInit {
   }
 
   changeLocation() {
+    this.spinner.show()
     this._carService.getCarByLocationId(this.fromLocation).subscribe((res: any) => {
       this.availableCar = res.data
+      this.spinner.hide()
     })
   }
 

@@ -17,6 +17,8 @@ import { CommonCarComponent } from './shared/common-car/common-car.component';
 import { AddCarComponent } from './shared/add-car/add-car.component'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from 'ngx-toastr';
+
 interface NgxSpinnerConfig {
   type?: string;
 }
@@ -40,7 +42,12 @@ interface NgxSpinnerConfig {
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      progressBar: true,
+      closeButton: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

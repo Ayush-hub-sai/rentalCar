@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -22,7 +23,9 @@ export class RegistrationComponent {
 
   constructor(private _carService: CarService,
     public activeModal: NgbActiveModal,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
+    ) {
 
   }
   register(data: any) {
@@ -31,6 +34,7 @@ export class RegistrationComponent {
       if (response.result) {
         this.activeModal.close()
         this.spinner.hide()
+        this.toastr.success(response.message)
       }
     })
   }
