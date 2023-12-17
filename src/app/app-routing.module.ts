@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'search/:locationId', component: SearchComponent },
   { path: 'booking/:carId', component: BookingComponent },
   { path: 'booking/:locationId/:carId', component: BookingComponent },
-  { path: 'cars', component: CarsComponent }
+  { path: 'cars', component: CarsComponent },
+  { path: 'cars/:userId', component: CarsComponent }
 ];
 
 @NgModule({

@@ -9,7 +9,6 @@ import { BookingComponent } from './components/booking/booking.component';
 import { CarsComponent } from './components/cars/cars.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModalComponent } from './shared/common-modal/common-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationComponent } from './shared/registration/registration.component';
 import { LoginComponent } from './shared/login/login.component';
@@ -29,7 +28,6 @@ interface NgxSpinnerConfig {
     SearchComponent,
     BookingComponent,
     CarsComponent,
-    CommonModalComponent,
     RegistrationComponent,
     LoginComponent,
     CommonCarComponent,

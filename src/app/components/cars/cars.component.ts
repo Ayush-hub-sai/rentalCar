@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CarService } from 'src/app/services/car.service';
 import { AddCarComponent } from 'src/app/shared/add-car/add-car.component';
-import { CommonModalComponent } from 'src/app/shared/common-modal/common-modal.component';
 
 @Component({
   selector: 'app-cars',
@@ -61,6 +60,8 @@ export class CarsComponent implements OnInit {
 
   getCarByOwer() {
     this.carService.getAllCarByUser(this.loginObj.userId).subscribe((res: any) => {
+      console.log(res.data);
+
       this.carList = res.data
     })
   }

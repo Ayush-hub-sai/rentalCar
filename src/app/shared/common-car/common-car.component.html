@@ -1,4 +1,4 @@
-<section class="car-list-card mb-2">
+<section class="car-list-card mb-2" *ngIf="carListFromParent.length!=0">
   <div class="car-list-card-image" style="height: 160px;"><img [src]="carListFromParent.imageUrl">
   </div>
   <div class="car-list-card-description">

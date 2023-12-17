@@ -18,41 +18,77 @@ export class CarService {
     this.carUserDetails.next(newValue);
   }
 
-  register(obj: any) {
-    return this.http.post(this.apiUrl + 'AddNewUser', obj)
-  }
-
-  login(obj: any) {
-    return this.http.post(this.apiUrl + 'Login', obj)
-  }
-
-  addNewCar(obj: any) {
-    return this.http.post(this.apiUrl + 'addNewCar', obj)
+  getAllCar() {
+    return this.http.get(this.apiUrl + 'GetAllCars');
   }
 
   getAllCarByUser(userId: any) {
     return this.http.get(this.apiUrl + `GetAllCarsByOwnerId?id=${userId}`);
   }
 
-  getAllLocation() {
-    return this.http.get(this.apiUrl + 'GetAllLocations');
-  }
-
-  getAllCar() {
-    return this.http.get(this.apiUrl + 'GetAllCars');
-  }
-
   getCarByLocationId(locationId: string) {
     return this.http.get(this.apiUrl + 'GetAllCarsByLocation?id=' + locationId);
   }
+
+  // https://freeapi.miniprojectideas.com/api/ZoomCar/searchCarByLocation?query=bishnu
 
   getCarById(carId: string) {
     return this.http.get(this.apiUrl + 'GetCarById?id=' + carId);
   }
 
+  addNewCar(obj: any) {
+    return this.http.post(this.apiUrl + 'addNewCar', obj)
+  }
+
+  UpdateCar(obj: any) {
+    return this.http.post(this.apiUrl + 'UpdateCar', obj)
+  }
+
+  // DeleteCarById?id=1
+
+  getAllLocation() {
+    return this.http.get(this.apiUrl + 'GetAllLocations');
+  }
+
+  // /AddBulkLocations
+
+  // DeleteLocationById?id=8
+
+  // GetAllUsers
+
+  // GetUserByUserId?userId=1
+
+  login(obj: any) {
+    return this.http.post(this.apiUrl + 'Login', obj)
+  }
+
+  register(obj: any) {
+    return this.http.post(this.apiUrl + 'AddNewUser', obj)
+  }
+
+  // UpdateUser
+
+  // DeleteUserByUserId?userId=9
+
+  // GetAllBookings
+
+  // GetAllBookingsByCarId?carid=3
+
+  // /GetAllBookingsByCustomerId?customerid=11
+
+  // GetBookingById?id=2
+
   createCarBooking(carObj: any) {
     return this.http.post(this.apiUrl + 'createNewBooking', carObj);
   }
+
+  // updateBooking
+
+  // DeleteBookingById?id=1
+
+  // GetAllReviewByCarId?carid=1
+
+  // AddReview
 
 
 }

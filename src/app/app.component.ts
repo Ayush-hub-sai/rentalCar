@@ -1,43 +1,43 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CarService } from './services/car.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CommonModalComponent } from './shared/common-modal/common-modal.component';
 import { RegistrationComponent } from './shared/registration/registration.component';
 import { LoginComponent } from './shared/login/login.component';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-
+import { NgZone } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'zoomcar';
 
-  loginObj: any = {
-    "emailId": ''
-  }
+  loginObj: any = {}
 
   constructor(private _carService: CarService,
     private modalService: NgbModal,
     private router: Router,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
+    private ngZone: NgZone,
+    private cdRef: ChangeDetectorRef
   ) {
+
+    this._carService.data$.subscribe((newValue: any) => {
+      this.cdRef.detectChanges();
+      this.loginObj = newValue;
+    });
+
+  }
+
+  ngOnInit(): void {
     let loggedUser = localStorage.getItem('loginUser')
     if (loggedUser) {
       this.loginObj = JSON.parse(loggedUser)
     }
-
-    this._carService.data$.subscribe((newValue) => {
-      console.log(newValue);
-
-      this.loginObj.emailId = newValue;
-
-    });
-
   }
 
   registerModal() {
@@ -57,19 +57,25 @@ export class AppComponent {
 
     modalRef.componentInstance.loginData.subscribe((res: any) => {
       if (res) {
-        this.loginObj.emailId = res.emailId
+        this.loginObj = res
+        location.reload()
       }
     })
   }
 
   LogOut() {
-    this.toastr.success("User logged in successfully.")
-    // this.spinner.show()
+    console.log(this.loginObj);
+
+    this.toastr.success("User logged out successfully.")
     localStorage.removeItem("loginUser")
     this.loginObj.emailId = ''
     this.router.navigate(['/home'])
-    // this.spinner.hide()
+    setTimeout(() => {
+      location.reload()
+    }, 2000);
   }
 
-
+  goToMycars() {
+    this.router.navigate(['/cars', this.loginObj.userId])
+  }
 }
