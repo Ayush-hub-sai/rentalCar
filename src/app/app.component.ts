@@ -76,4 +76,14 @@ export class AppComponent implements OnInit {
   goToMycars() {
     this.router.navigate(['/cars', this.loginObj.userId])
   }
+
+  updateUser(loginObj: any) {
+    const modalRef = this.modalService.open(RegistrationComponent, {
+      size: 'lg',
+      centered: true
+    });
+    modalRef.componentInstance.openRegModal = true;
+    modalRef.componentInstance.updateUser = loginObj;
+
+  }
 }

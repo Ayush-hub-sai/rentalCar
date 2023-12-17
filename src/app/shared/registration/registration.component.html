@@ -47,7 +47,9 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+    <button *ngIf="updateUser==undefined" type="button" class="btn btn-success"
       (click)="register(registerObj)">Register</button>
+    <button *ngIf="updateUser!=undefined" type="button" class="btn btn-success"
+      (click)="updateUserData(registerObj)">Update</button>
   </div>
 </ng-container>

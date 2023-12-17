@@ -68,7 +68,9 @@ export class CarService {
     return this.http.post(this.apiUrl + 'AddNewUser', obj)
   }
 
-  // UpdateUser
+  UpdateUser(obj: any) {
+    return this.http.put(this.apiUrl + 'UpdateUser', obj)
+  }
 
   // DeleteUserByUserId?userId=9
 

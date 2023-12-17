@@ -29,7 +29,7 @@
 
           <ng-container *ngIf="loginObj?.emailId!=''">
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item">{{ loginObj?.name }}</a></li>
+              <li><a class="dropdown-item" (click)="updateUser(loginObj)">{{ loginObj?.name }}</a></li>
               <ng-container *ngIf="loginObj?.userRole=='CarOwner'">
                 <li><a class="dropdown-item" (click)="goToMycars()">My Cars</a></li>
               </ng-container>
