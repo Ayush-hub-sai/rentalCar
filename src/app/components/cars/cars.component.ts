@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { CarService } from 'src/app/services/car.service';
 import { AddCarComponent } from 'src/app/shared/add-car/add-car.component';
 
@@ -33,8 +35,9 @@ export class CarsComponent implements OnInit {
     "carId": 0
   }
 
-  constructor(private carService: CarService, private modalService: NgbModal) {
-
+  constructor(private carService: CarService, private modalService: NgbModal,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,) {
   }
 
   ngOnInit(): void {
@@ -45,7 +48,7 @@ export class CarsComponent implements OnInit {
     }
   }
 
-  AddNewCarModal() {
+  AddNewCarModal(carData?: any) {
     const modalRef = this.modalService.open(AddCarComponent, {
       size: 'lg',
       centered: true
@@ -53,6 +56,8 @@ export class CarsComponent implements OnInit {
     modalRef.componentInstance.addNewCar = true
     modalRef.componentInstance.carObjModal = this.carObj
     modalRef.componentInstance.carAccModal = this.accessoriesObj
+    modalRef.componentInstance._carData = carData
+
     modalRef.result.then((res: any) => {
       this.getCarByOwer()
     })
@@ -60,11 +65,23 @@ export class CarsComponent implements OnInit {
 
   getCarByOwer() {
     this.carService.getAllCarByUser(this.loginObj.userId).subscribe((res: any) => {
-      console.log(res.data);
-
       this.carList = res.data
     })
   }
 
+  deleteCar(carId: any) {
+    this.carService.deleteCarById(carId).subscribe((res: any) => {
+      if (res.result) {
+        this.toastr.success(res.message)
+        this.getCarByOwer()
+      }
+    })
+  }
+
+  carAccessories(acc: any) {
+    console.log(acc);
+
+
+  }
 
 }

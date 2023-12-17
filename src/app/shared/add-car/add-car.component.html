@@ -1,7 +1,9 @@
 <!-- car component -->
 <ng-container *ngIf="addNewCar">
   <div class="modal-header">
-    <h4 class="modal-title">Add Car</h4>
+    <h4 class="modal-title" *ngIf="_carData != undefined">Update Car</h4>
+    <h4 class="modal-title" *ngIf="_carData == undefined">Add Car</h4>
+
     <span class="pull-right">
       <button type="button " class="pull-right close btn btn-sm btn-outline-danger" aria-label="Close"
         (click)="activeModal.close()">
@@ -103,12 +105,18 @@
         </div>
       </div>
     </div>
-
-
-
   </div>
+
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="saveCar(carObjModal)">Save
-      car</button>
+    <ng-container *ngIf="_carData == undefined">
+      <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="saveCar(carObjModal)">Save
+        car</button>
+    </ng-container>
+
+    <ng-container *ngIf="_carData != undefined">
+      <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="saveCar(carObjModal)">Update
+        car</button>
+    </ng-container>
   </div>
+
 </ng-container>

@@ -76,8 +76,6 @@ export class BookingComponent implements OnInit {
     if (this.loginObj?.userId == undefined) {
       this.loginModal();
     } else {
-      console.log(this.carObj.fromLocationId);
-
       if (this.carObj.fromLocationId < 1) {
         this.toastr.error("Please Enter from Location")
         return

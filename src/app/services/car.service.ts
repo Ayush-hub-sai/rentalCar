@@ -44,7 +44,9 @@ export class CarService {
     return this.http.post(this.apiUrl + 'UpdateCar', obj)
   }
 
-  // DeleteCarById?id=1
+  deleteCarById(carId: string) {
+    return this.http.get(this.apiUrl + 'DeleteCarById?id=' + carId);
+  }
 
   getAllLocation() {
     return this.http.get(this.apiUrl + 'GetAllLocations');

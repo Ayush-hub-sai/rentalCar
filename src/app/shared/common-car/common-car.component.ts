@@ -1,4 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CarService } from 'src/app/services/car.service';
+import { AddCarComponent } from '../add-car/add-car.component';
 
 @Component({
   selector: 'app-common-car',
@@ -7,13 +10,16 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class CommonCarComponent implements OnInit {
   @Input() carListFromParent: any;
+  loginObj: any = {}
 
-  constructor() {
+  constructor(private carService: CarService, private modalService: NgbModal) {
 
   }
-  
+
   ngOnInit(): void {
 
   }
+
+  
 
 }

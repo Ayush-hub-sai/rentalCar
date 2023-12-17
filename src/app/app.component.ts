@@ -64,8 +64,6 @@ export class AppComponent implements OnInit {
   }
 
   LogOut() {
-    console.log(this.loginObj);
-
     this.toastr.success("User logged out successfully.")
     localStorage.removeItem("loginUser")
     this.loginObj.emailId = ''
