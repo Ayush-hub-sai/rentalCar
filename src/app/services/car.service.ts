@@ -74,8 +74,6 @@ export class CarService {
 
   // GetAllBookings
 
-  // GetAllBookingsByCarId?carid=3
-
   getAllBookingByCarId(carId: any) {
     return this.http.get(this.apiUrl + 'GetAllBookingsByCarId?carid=' + carId);
   }
@@ -83,6 +81,7 @@ export class CarService {
   getAllBookingByCustomerId(customerid: any) {
     return this.http.get(this.apiUrl + 'GetAllBookingsByCustomerId?customerid=' + customerid);
   }
+
   // GetBookingById?id=2
 
   createCarBooking(carObj: any) {
@@ -91,7 +90,9 @@ export class CarService {
 
   // updateBooking
 
-  // DeleteBookingById?id=1
+  deleteBookingById(bookingId: any) {
+    return this.http.get(this.apiUrl + 'DeleteBookingById?id=' + bookingId);
+  }
 
   // GetAllReviewByCarId?carid=1
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class BookingListComponent implements OnInit {
     }
   }
 
-  constructor(private carService: CarService) { }
+  constructor(private carService: CarService, private toaster: ToastrService) { }
 
   getAllBookingByCustomerId() {
     this.carService.getAllBookingByCustomerId(this.loginObj.userId).subscribe((res: any) => {
@@ -42,11 +43,16 @@ export class BookingListComponent implements OnInit {
   }
 
   deleteBooking(data: any) {
-
+    this.carService.deleteBookingById(data).subscribe((res: any) => {
+      if (res.result) {
+        this.toaster.success(res.message)
+        this.getAllBookingByCustomerId()
+      }
+    })
   }
 
   updateBooking(data: any) {
 
   }
-  
+
 }

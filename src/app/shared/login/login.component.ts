@@ -32,6 +32,12 @@ export class LoginComponent implements OnInit {
       this.loginObj = JSON.parse(loggedUser)
     }
 
+    this._carService.data$.subscribe((res: any) => {
+      if (res.emailId != '') {
+        location.reload()
+      }
+    })
+
   }
 
   ngOnInit(): void {
