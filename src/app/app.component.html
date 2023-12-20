@@ -33,6 +33,12 @@
               <ng-container *ngIf="loginObj?.userRole=='CarOwner'">
                 <li><a class="dropdown-item" (click)="goToMycars()">My Cars</a></li>
               </ng-container>
+              <ng-container *ngIf="loginObj?.userRole=='customer'">
+                <li><a class="dropdown-item" (click)="goToMyBooking()">My Bookings</a></li>
+              </ng-container>
+              <ng-container *ngIf="loginObj?.userRole=='CarOwner'">
+                <li><a class="dropdown-item" (click)="goToMyCarBooking()">My Cars Booking</a></li>
+              </ng-container>
               <li><a class="dropdown-item" (click)="LogOut()">Log Out</a></li>
             </ul>
           </ng-container>

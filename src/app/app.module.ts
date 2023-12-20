@@ -17,6 +17,7 @@ import { AddCarComponent } from './shared/add-car/add-car.component'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule } from 'ngx-toastr';
+import { BookingListComponent } from './components/booking-list/booking-list.component';
 
 interface NgxSpinnerConfig {
   type?: string;
@@ -31,7 +32,8 @@ interface NgxSpinnerConfig {
     RegistrationComponent,
     LoginComponent,
     CommonCarComponent,
-    AddCarComponent
+    AddCarComponent,
+    BookingListComponent
   ],
   imports: [
     BrowserModule,

@@ -30,8 +30,6 @@ export class CarService {
     return this.http.get(this.apiUrl + 'GetAllCarsByLocation?id=' + locationId);
   }
 
-  // https://freeapi.miniprojectideas.com/api/ZoomCar/searchCarByLocation?query=bishnu
-
   getCarById(carId: string) {
     return this.http.get(this.apiUrl + 'GetCarById?id=' + carId);
   }
@@ -78,8 +76,13 @@ export class CarService {
 
   // GetAllBookingsByCarId?carid=3
 
-  // /GetAllBookingsByCustomerId?customerid=11
+  getAllBookingByCarId(carId: any) {
+    return this.http.get(this.apiUrl + 'GetAllBookingsByCarId?carid=' + carId);
+  }
 
+  getAllBookingByCustomerId(customerid: any) {
+    return this.http.get(this.apiUrl + 'GetAllBookingsByCustomerId?customerid=' + customerid);
+  }
   // GetBookingById?id=2
 
   createCarBooking(carObj: any) {

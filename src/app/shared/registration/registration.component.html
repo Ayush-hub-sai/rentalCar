@@ -1,6 +1,7 @@
 <ng-container *ngIf="openRegModal">
   <div class="modal-header">
-    <h4 class="modal-title">Register</h4>
+    <h4 class="modal-title" *ngIf="updateUser==undefined">Register</h4>
+    <h4 class="modal-title" *ngIf="updateUser!=undefined">Update User</h4>
     <span class="pull-right">
       <button type="button " class="pull-right close btn btn-sm btn-outline-danger" aria-label="Close"
         (click)="activeModal.dismiss()">

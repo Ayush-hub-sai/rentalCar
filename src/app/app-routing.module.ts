@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { CarsComponent } from './components/cars/cars.component';
+import { BookingListComponent } from './components/booking-list/booking-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,7 +13,9 @@ const routes: Routes = [
   { path: 'booking/:carId', component: BookingComponent },
   { path: 'booking/:locationId/:carId', component: BookingComponent },
   { path: 'cars', component: CarsComponent },
-  { path: 'cars/:userId', component: CarsComponent }
+  { path: 'cars/:userId', component: CarsComponent },
+  { path: 'bookingList', component: BookingListComponent }
+
 ];
 
 @NgModule({

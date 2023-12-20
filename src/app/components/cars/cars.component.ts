@@ -79,8 +79,6 @@ export class CarsComponent implements OnInit {
   }
 
   carAccessories(acc: any) {
-    console.log(acc);
-
 
   }
 

@@ -1,0 +1,51 @@
+<div class="car-list-home-container">
+  <div class="car-list-home">
+    <div class="row">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Brand</th>
+            <th>Car Name</th>
+            <th>Location</th>
+            <th>Price Description</th>
+            <th>Booking No</th>
+            <th>Travel Date</th>
+            <th>Departure Time</th>
+            <th>Car Owner</th>
+            <th>Car Owner Mobile</th>
+            <th>Is Complete</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of bookingList ">
+            <td>
+              <img [src]="booking.imageUrl" alt="">
+            </td>
+            <td>{{booking.brand}}</td>
+            <td>{{booking.name}}</td>
+            <td>{{booking.locationTitle}}</td>
+            <td>{{booking.pricingDescription}}</td>
+            <td>{{booking.bookingNo}}</td>
+            <td>{{ booking.travelDate | date:'dd-MM-yyyy' }}</td>
+            <td>{{booking.departureTime}}</td>
+            <td>{{booking.carOwnerName}}</td>
+            <td>{{booking.carOwnermobileNo}}</td>
+            <td>{{booking.isComplete}}</td>
+
+            <td class="d-flex justify-content-between">
+              <button class="btn btn-danger" (click)="deleteBooking(booking.carId)"><i class="fa fa-trash-o"
+                  aria-hidden="true"></i></button>&nbsp;
+              <button class="btn btn-secondary" (click)="updateBooking(booking)"><i class="fa fa-pencil-square-o"
+                  aria-hidden="true"></i></button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</div>

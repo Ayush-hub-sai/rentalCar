@@ -86,4 +86,12 @@ export class AppComponent implements OnInit {
     modalRef.componentInstance.updateUser = loginObj;
 
   }
+
+  goToMyBooking() {
+    this.router.navigate(['/bookingList'])
+  }
+
+  goToMyCarBooking() {
+    this.router.navigate(['/bookingList'])
+  }
 }
