@@ -1,4 +1,4 @@
-<div class="car-list-home-container">
+<div class="car-list-home-container" *ngIf="bookingList.length>0">
   <div class="car-list-home">
     <div class="row">
       <table class="table table-striped table-hover">
@@ -48,4 +48,8 @@
 
     </div>
   </div>
+</div>
+<div class="row text-center" *ngIf="bookingList.length==0">
+  <h5>There is no booking</h5>
+  <h3 class="text-muted">Please book a car.</h3>
 </div>
